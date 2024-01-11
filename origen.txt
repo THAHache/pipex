@@ -1,0 +1,28 @@
+DOCUMENTACIÓN PARA PIPEX
+
+Funciones permitidas:
+open, close, read, write,
+malloc, free, perror,
+strerror, access, dup, dup2,
+execve, exit, fork, pipe,
+unlink, wait, waitpid
+
+
+
+Funcionamiento:
+
+< Eleccion del archivo de origen
+
+> Guardar en el archivo destino
+
+
+
+Ejemplos:
+< origen.txt ls -l | wc -l > dst.txt
+< origen.txt grep a1 | wc -w > dst.txt
+./pipex origen.txt "grep a1" "wc -l" dst.txt
+
+Aclaraciones
+grep busca en el archivo la cadena que se le pasa como argumento, en este caso sería a1
+El pipeline aplica la salida del primer comando al segundo
+wc es un contador. la flag -w se cuentan las palabras y con -l se cuentan las líneas.
