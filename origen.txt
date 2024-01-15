@@ -7,7 +7,26 @@ strerror, access, dup, dup2,
 execve, exit, fork, pipe,
 unlink, wait, waitpid
 
+con execve se ejecutan los comandos del sistema
 
+Si a un fichero se le deniega el permiso (la función intentada  execve  devuelve  EACCES),
+       estas  funciones  continuarán  buscando  en  el  resto  del  camino  de búsqueda. Si no se
+       encuentra otro fichero, empero, retornarán dando el valor  EACCES  a  la  variable  global
+       errno .
+Si  no  se  reconoce  la  cabecera  de  un  fichero  (la función intentada execve devuelve
+       ENOEXEC), estas funciones ejecutarán el shell con el camino del  fichero  como  su  primer
+       argumento. (Si este intento falla, no se busca más.)
+Todas estas funciones pueden fallar y dar un valor a errno para cualquiera de los  errores
+       especificados para la función execve(2).
+hay que poner la ruta donde se encuentran los comandos. ej: "/bin/grep"
+
+
+fork() para obtener el id del proceso?
+wait primo del fork?
+
+dup2(fdsrc, fddst); clona el primer df en el segundo. Hay que ir cerrando los fd que se abran
+
+pipe(fd1);
 
 Funcionamiento:
 
@@ -26,3 +45,5 @@ Aclaraciones
 grep busca en el archivo la cadena que se le pasa como argumento, en este caso sería a1
 El pipeline aplica la salida del primer comando al segundo
 wc es un contador. la flag -w se cuentan las palabras y con -l se cuentan las líneas.
+
+whiletruethendream canal de yt para ver las cosas estas
