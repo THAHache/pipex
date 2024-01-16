@@ -6,7 +6,7 @@
 #    By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/01 22:28:09 by jperez-r          #+#    #+#              #
-#    Updated: 2024/01/11 19:30:28 by jperez-r         ###   ########.fr        #
+#    Updated: 2024/01/16 15:40:58 by jperez-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRCS    = ft_strlen.c \
 		ft_lstsize.c \
 		ft_lstmap.c \
 		gnl/get_next_line.c \
-		gnl/get_next_line_utils.c \
+		gnl/get_next_line_utils.c
 
 OBJS    = ${SRCS:.c=.o}
 

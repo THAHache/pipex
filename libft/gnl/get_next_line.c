@@ -6,22 +6,24 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 06:25:30 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/01/11 20:08:36 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:40:00 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	put_line(char **line, char **aux)
+int	put_line(char **line, char **aux, int reader)
 {
 	char	*tmp;
 	int		pos;
 
+	if (reader == -1)
+		return (-1);
 	pos = gnl_strchr(*aux, '\n');
 	if (pos >= 0)
 	{
 		*line = ft_substr(*aux, 0, pos);
-		tmp = ft_substr(*aux, pos + 1, (const) ft_strlen(*aux));
+		tmp = ft_substr(*aux, pos + 1, ft_strlen(*aux));
 		free(*aux);
 		*aux = tmp;
 		return (1);
@@ -49,18 +51,17 @@ int	get_next_line(int fd, char **line)
 		return (-1);
 	if (!aux[fd])
 		aux[fd] = ft_strdup("");
-	//while (gnl_strchr(aux[fd], '\n') == -1
-	//		&& (reader = read(fd, buff, BUFFER_SIZE)) > 0)
-	while (gnl_strchr(aux[fd], '\n') == -1 && read(fd, buff, BUFFER_SIZE) > 0)
+	reader = 1;
+	while (gnl_strchr(aux[fd], '\n') == -1 && reader > 0)
 	{
 		reader = read(fd, buff, BUFFER_SIZE);
-		buff[reader] = '\0';
-		aux[fd] = gnl_strjoin(aux[fd], buff);
+		if (reader > 0)
+		{
+			buff[reader] = '\0';
+			aux[fd] = gnl_strjoin(aux[fd], buff);
+		}
 	}
-	if (reader == -1)
-		ctrl = -1;
-	else
-		ctrl = put_line(line, &aux[fd]);
+	ctrl = put_line(line, &aux[fd], reader);
 	free(buff);
 	return (ctrl);
 }

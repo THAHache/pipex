@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 06:24:16 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/01/11 19:47:00 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:41:18 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@
 # include <unistd.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "../libft.h"
 
-//size_t	ft_strlen(const char *s);
+//size_t	gnl_strlen(const char *s);
 int		gnl_strchr(const char *s, int c);
-//char	*ft_substr(char const *s, unsigned int start, size_t len);
+//char	*gnl_substr(char const *s, unsigned int start, size_t len);
 char	*gnl_strjoin(char *s, char const *s2);
-//char	*ft_strdup(const char *s);
+//char	*gnl_strdup(const char *s);
+//int		put_line(char **line, char **aux, int reader);
 int		get_next_line(int fd, char **line);
 
 #endif
