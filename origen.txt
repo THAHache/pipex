@@ -20,6 +20,13 @@ Todas estas funciones pueden fallar y dar un valor a errno para cualquiera de lo
        especificados para la función execve(2).
 hay que poner la ruta donde se encuentran los comandos. ej: "/bin/grep"
 
+execve()  ejecuta  el  programa  indicado por filename.
+       El intérprete debe ser un nombre de camino válido para un ejecutable que no sea él mismo un guión y que será ejecutado como intérprete [arg] filename.
+       * Sintaxis => int execve (const char *filename, const char *argv [], const char *envp[]);
+
+
+
+
 
 fork() para obtener el id del proceso?
 wait primo del fork?
@@ -27,6 +34,19 @@ wait primo del fork?
 dup2(fdsrc, fddst); clona el primer df en el segundo. Hay que ir cerrando los fd que se abran
 
 pipe(fd1);
+
+La función access en C se utiliza para verificar si un proceso tiene permisos de acceso a un archivo o directorio. Su prototipo es el siguiente:
+              int access(const char *path, int mode);
+       path: Es una cadena que representa la ruta al archivo o directorio que se quiere verificar.
+       mode: Es un entero que especifica los permisos que se quieren verificar.
+       Puede tomar valores como R_OK (lectura), W_OK (escritura), X_OK (ejecución) y F_OK (existencia del archivo/directorio).
+       La función devuelve 0 si el acceso se permite según los permisos especificados y -1 si hay un error. En caso de error, se puede consultar la variable errno para obtener más detalles sobre el problema.
+
+La llamada al sistema unlink elimina la entrada al directorio de un archivo y reduce los enlaces del mismo.
+       Envía 0 si la desvinculación fue correcta, y -1 si hubo error.
+       Debe tener permisos de escritura y de ejecución en el directorio en el cual tiene el archivo su entrada de directorio para que esta llamada funcione:
+              int unlink(const char *path)
+
 
 Funcionamiento:
 

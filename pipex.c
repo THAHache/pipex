@@ -6,11 +6,13 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:32:56 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/01/16 17:56:07 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:22:54 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+extern char **environ;
 
 void	free_line(char *line)
 {
@@ -90,17 +92,44 @@ int	main(int argc, char *argv[])
 {
 	if (argc == 1)
 		return (0);
-	/*if (argc != 5)
+	if (argc != 5)
 	{
-		//ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (0);
-	}*/
+	}
 	/*if (!error_controlpx(argv))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}*/
-	pipex(argv);
-	system("leaks -q -- ./pipex");
+	//pipex(argv);
+	if(!argv)
+		return 0;
+	/*char *arg[] = {"/.ls", "-la", NULL};
+	char *envp[] = {"-la", NULL};
+	execve("/bin/ls", arg, envp);*/
+	/*char **env = environ;
+	while (*env)
+	{
+		if(!ft_strncmp(ft_substr(*env, 0, 4), "PATH", 4))
+			printf("%s\n", *env);
+		env++;
+	}*/
+
+	/*int s;
+
+	s = socket(PF_INET, SOCK_STREAM, 0);
+
+	if (s == -1) { // some error has occurred
+		// prints "socket error: " + the error message:
+		perror("socket error");
+	}
+
+	// similarly:
+	if (listen(s, 10) == -1) {
+		// this prints "an error: " + the error message from errno:
+		printf("an error: %s\n", strerror(errno));
+	}*/
+	//system("leaks -q -- ./pipex");
 	return (1);
 }
