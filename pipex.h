@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:30:59 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/01/16 17:42:25 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:41:12 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 # include "./libft/libft.h"
 # include "./libft/gnl/get_next_line.h"
 
+void	free_line(char *line);
 int		error_controlpx(char **s);
+int		pipex(char **s);
 int		main(int argc, char *argv[]);
 
 #endif

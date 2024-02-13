@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:32:56 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/02/13 17:22:54 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/02/13 20:21:30 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,32 @@ int	pipex(char **s)
 	return (1);
 }
 
+int	pipex2()
+{
+	int	fdp[2];
+	//int	fdi;
+	//int fdo;
+	int pid;
+	int state;
+
+	pipe (fdp);
+	pid = fork();
+	if (pid == 0)
+	{
+		close(fdp[0]);
+		printf("soy hijo\n");
+		close(fdp[1]);
+	}
+	else
+	{
+		close(fdp[1]);
+		wait(&state);
+		printf("soy padre\n");
+		close(fdp[0]);
+	}
+	return (1);
+}
+
 /*int   pipex(char **av)
 {
   char  *line;
@@ -90,21 +116,26 @@ int	pipex(char **s)
 
 int	main(int argc, char *argv[])
 {
+	//int pi;
 	if (argc == 1)
 		return (0);
+	//if (argc == 4)
+		//función para ver si los argumentos son válidos
 	if (argc != 5)
 	{
-		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Error. Need 5 arguments\n", 2);
 		return (0);
 	}
+	//pipex2(argv);
+	pipex2();
+	if(!argv)
+		return 0;
 	/*if (!error_controlpx(argv))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}*/
 	//pipex(argv);
-	if(!argv)
-		return 0;
 	/*char *arg[] = {"/.ls", "-la", NULL};
 	char *envp[] = {"-la", NULL};
 	execve("/bin/ls", arg, envp);*/
