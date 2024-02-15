@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:32:56 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/02/13 20:21:30 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:20:48 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,74 @@ int	error_controlpx(char **s)
 	return (1);
 }
 
+int	child (char **s, int *fdp)
+{
+	char	**cmd;
+	char	*path;
+
+	close(fdp[0]);
+	//printf("strlen tiene que ser 12: %lu\n", strlen("hola, padre") + 1);
+	//cmd = ft_substrchr(s[2], ' ');
+	cmd = ft_split(s[2], ' ');
+	path = ft_strjoin("/bin/", cmd[0]);
+	dup2(fdp[1], STDOUT_FILENO);
+	printf("el comando es: %s, la flag es %s y la ruta es %s\n", cmd[0], cmd[1], path);
+	execve(path, cmd, NULL);
+	write(fdp[1], "hola, padre", strlen("hola, padre") + 1);
+	//printf("soy hijo, mi pid es: %d\n", getpid());
+	close(fdp[1]);
+	//exit(3);
+	//return (222);
+	return (1);
+}
+
+int	father (char **s, int *fdp)
+{
+	//char	buff[250];
+	int	fdo;
+	char	**cmd;
+	char	*path;
+	//int state;
+
+	close(fdp[1]);
+	cmd = ft_split(s[3], ' ');
+	path = ft_strjoin("/bin/", cmd[0]);
+	fdo = open(s[4], O_WRONLY);
+	dup2(fdp[0], STDIN_FILENO);
+	//read(fdp[0], buff, sizeof(buff));
+	//printf("soy padre\nmi hijo me dice: %s\n", buff);
+	dup2(fdo, STDOUT_FILENO);
+	execve(path, cmd, NULL);
+	//wait(&state);
+	//printf("soy padre\npid padre: %d\tpid hijo: %d\t\tstate: %d\n", getpid(), pid, state);
+	close(fdp[0]);
+	return(1);
+}
+
+int	pipex2(char **s)
+{
+	int	fdp[2];
+	//int	fdi;
+	//int fdo;
+	pid_t pid;
+	//int state;
+
+	if(pipe (fdp) != 0) //mandar primero que hay un error y luego ya el return
+		return (-1);
+	pid = fork();
+	if (pid < 0)
+		return (-1);
+	if (pid == 0)
+	{
+		child(s, fdp);
+	}
+	else
+	{
+		father(s, fdp);
+	}
+	return (1);
+}
+
 int	pipex(char **s)
 {
 	int		fd;
@@ -61,31 +129,6 @@ int	pipex(char **s)
 	return (1);
 }
 
-int	pipex2()
-{
-	int	fdp[2];
-	//int	fdi;
-	//int fdo;
-	int pid;
-	int state;
-
-	pipe (fdp);
-	pid = fork();
-	if (pid == 0)
-	{
-		close(fdp[0]);
-		printf("soy hijo\n");
-		close(fdp[1]);
-	}
-	else
-	{
-		close(fdp[1]);
-		wait(&state);
-		printf("soy padre\n");
-		close(fdp[0]);
-	}
-	return (1);
-}
 
 /*int   pipex(char **av)
 {
@@ -127,7 +170,11 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	//pipex2(argv);
-	pipex2();
+	if(pipex2(argv) == -1)
+	{
+		ft_putstr_fd("Error. Pipe or PID\n", 2);
+		return (0);
+	}
 	if(!argv)
 		return 0;
 	/*if (!error_controlpx(argv))
