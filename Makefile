@@ -6,11 +6,15 @@
 #    By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 19:24:26 by jperez-r          #+#    #+#              #
-#    Updated: 2024/01/11 19:24:31 by jperez-r         ###   ########.fr        #
+#    Updated: 2024/02/16 21:53:13 by jperez-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	pipex.c \
+			path.c \
+			child.c \
+			father.c \
+			basura.c
 
 LIBFT	=	libft/
 
