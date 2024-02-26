@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:09:31 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/02/16 22:35:14 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:19:15 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	child(char **s, int *fdp)
 
 	close(fdp[0]);
 	if (access (s[1], F_OK) != 0)
-	{
-		ft_putstr_fd("Error. File not found\n", 2);
-		return (0);
-	}
+		return (error_pipex(3));
 	fdi = open(s[1], O_RDONLY);
 	dup2(fdi, 0);
 	cmd = ft_split(s[2], ' ');

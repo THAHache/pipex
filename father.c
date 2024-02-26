@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:14:34 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/02/16 22:30:04 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:32:08 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	father(char **s, int *fdp)
 	int		fdo;
 
 	close(fdp[1]);
-	fdo = open("dst.txt", O_WRONLY | O_CREAT | O_TRUNC, 0600);
+	fdo = open(s[4], O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	cmd = ft_split(s[3], ' ');
 	path = com_path(cmd[0]);
 	dup2(fdp[0], STDIN_FILENO);
