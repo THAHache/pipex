@@ -1,11 +1,37 @@
 DOCUMENTACIÓN PARA PIPEX
 
-Funciones permitidas:
-open, close, read, write,
-malloc, free, perror,
-strerror, access, dup, dup2,
-execve, exit, fork, pipe,
-unlink, wait, waitpid
+* El nombre del programa será "pipex".
+* Los archivos a entregar serán el Makefile para la compilación, archivos *.h y *.c necesarios.
+* LIBFT y GNL (opcional) para completar el proyecto.
+* Funciones permitidas:
+       ·open         ·close ·read         ·write        ·access       ·execve
+       ·malloc       ·free  ·perror       ·strerror     ·dup          ·dup2
+       ·exit         ·fork  ·pipe         ·unlink       ·wait         ·waitpid
+* Parte oblligatoria
+       · El programa deberá ejecutarse de la siguiente forma:
+              ./pipex archivo1 comando1 comando2 archivo2
+       · Deberá utilizar 4 argumentos:
+              - archivo1 y archivo2 son nombres de archivos
+              - comando1 y comando2 son comandos de shell
+       · La ejecución del programa pipex deberá hacer lo mismo que el siguiente comando:
+              $> < archivo1 comando1 comando2 > archivo2
+              - El caracter '<' selecciona el archivo1 como objetivo del comando1
+              - El pipeline('|') permite conectar la salida del comando1 con el comando2, convirtiéndola en su entrada
+              - El caracter '>' redirige la salida del comando2 al archivo2 y lo sobrescribe con el resultado
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+       ·
+
 
 con execve se ejecutan los comandos del sistema
 
