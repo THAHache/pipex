@@ -9,7 +9,7 @@
 		·malloc	·free	·perror	·strerror	·dup	·dup2
 		·exit	·fork	·pipe	·unlink		·wait	·waitpid
 
-## Parte oblligatoria
+ Parte oblligatoria
 	* El programa deberá ejecutarse de la siguiente forma:
 		´./pipex archivo1 comando1 comando2 archivo2´
 	* Deberá utilizar 4 argumentos:
@@ -21,7 +21,7 @@
 		- El pipeline('|') permite conectar la salida del comando1 con el comando2, convirtiéndola en su entrada
 		- El caracter '>' redirige la salida del comando2 al archivo2 y lo sobrescribe con el resultado
 
-## Llamadas al sistema
+ Llamadas al sistema
 	* Gestión de ficheros
 		- Open
 			- Acceso a un fichero existente para leerlo y/o escribir sobre él
