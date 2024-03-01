@@ -1,4 +1,4 @@
-# DOCUMENTACIÓN PARA PIPEX
+ DOCUMENTACIÓN PARA PIPEX
 
 ## Según el subject
 	* El nombre del programa será *pipex*.
