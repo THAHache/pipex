@@ -1,6 +1,6 @@
- DOCUMENTACIÓN PARA PIPEX
+# DOCUMENTACIÓN PARA PIPEX
 
- Según el subject
+## Según el subject
 	* El nombre del programa será *pipex*.
 	* Los archivos a entregar serán el **Makefile** para la compilación, archivos **\*.h** y **\*.c** necesarios.
 	* LIBFT y GNL (opcional) para completar el proyecto.
