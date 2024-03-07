@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:32:56 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/02/26 16:05:47 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:26:00 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	pipex(char **s)
 	pid_t	pid;
 
 	if (pipe (fdp) != 0)
-		return (error_pipex(1));
+		return (error_pipex(1, NULL));
 	pid = fork();
 	if (pid < 0)
-		return (error_pipex(2));
+		return (error_pipex(2, NULL));
 	if (pid == 0)
 	{
 		if (!child(s, fdp))
@@ -43,12 +43,12 @@ int	main(int argc, char *argv[])
 		función para ver si los argumentos son válidos*/
 		//sleep(30);
 	if (argc != 5)
-		return (error_pipex(0));
+		return (error_pipex(0, "file1 command1 command2 file2\n"));
 	if (!pipex(argv))
 	{
-		//system("leaks -q -- ./pipex");
+		system("leaks ./pipex");
 		return (0);
 	}
-	//system("leaks -q -- ./pipex");
+	system("leaks ./pipex");
 	return (1);
 }
