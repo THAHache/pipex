@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path.c                                             :+:      :+:    :+:   */
+/*   ft_free_double.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/16 21:45:55 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/07 16:35:14 by jperez-r         ###   ########.fr       */
+/*   Created: 2024/03/07 14:17:42 by jperez-r          #+#    #+#             */
+/*   Updated: 2024/03/07 14:41:01 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-char	*com_path(char *cmd)
+int	ft_free_double(char **s)
 {
-	char	*path;
+	int	i;
 
-	path = ft_strjoin("/bin/", cmd);
-	if (access (path, F_OK) == 0)
-		return (path);
-	path = ft_strjoin("/usr", path);
-	if (access (path, F_OK) == 0)
-		return (path);
-	cmd = ft_strjoin(cmd, " \n");
-	error_pipex(5, cmd);
-	free (path);
-	return (NULL);
+	i = 0;
+	if (!s)
+		return(0);
+	while (s[i])
+	{
+		free (s[i]);
+		i++;
+	}
+	free(s);
+	return (1);
 }

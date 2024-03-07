@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:30:59 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/04 14:43:45 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:37:40 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 
 int		error_pipex(int er, char *cmd);
 
+int		can_read(char *s);
+int		can_write(char *s);
 char	*com_path(char *cmd);
 int		child(char **s, int *fdp);
 int		father(char **s, int *fdp);

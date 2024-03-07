@@ -26,6 +26,25 @@ int	error_controlpx(char **s)
 	close(fd);
 	return (1);
 }
+
+/*char	*com_path(char *cmd)
+{
+	char	*path;
+
+	path = ft_strjoin("/bin/", cmd);
+	if (access (path, F_OK) != 0)
+	{
+		path = ft_strjoin("/usr", path);
+		if (access (path, F_OK) != 0)
+		{
+			cmd = ft_strjoin(cmd, " \n");
+			error_pipex(5, cmd);
+			free (path);
+			return (NULL);
+		}
+	}
+	return (path);
+}*/
 /*int	child (char **s, int *fdp)
 {
 	char	**cmd;

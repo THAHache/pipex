@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:52:56 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/02/15 21:44:42 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:41:13 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int					ft_tolower(int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
 int					ft_pow(int base, int pow);
+int					ft_free_double(char **s);
 long				ft_atoilong(const char *str);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);

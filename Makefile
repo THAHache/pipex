@@ -6,13 +6,14 @@
 #    By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 19:24:26 by jperez-r          #+#    #+#              #
-#    Updated: 2024/02/26 13:42:42 by jperez-r         ###   ########.fr        #
+#    Updated: 2024/03/07 16:12:42 by jperez-r         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	pipex.c \
 			error_pipex.c \
 			path.c \
+			is_access.c \
 			child.c \
 			father.c \
 			basura.c

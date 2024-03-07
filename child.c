@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:09:31 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/05 15:59:10 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:14:59 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	child(char **s, int *fdp)
 	int		fdi;
 
 	close(fdp[0]);
-	if (access (s[1], F_OK) != 0)
-		return (error_pipex(3, NULL));
+	if (!can_read(s[1]))
+		return (0);
 	fdi = open(s[1], O_RDONLY);
-	dup2(fdi, 0);
+	dup2(fdi, STDIN_FILENO);
 	cmd = ft_split(s[2], ' ');
-	// Hay que liberar el split
 	path = com_path(cmd[0]);
 	if (!path)
 	{
 		close(fdi);
+		ft_free_double(cmd);
 		return (-1);
 	}
 	dup2(fdp[1], STDOUT_FILENO);
@@ -36,5 +36,6 @@ int	child(char **s, int *fdp)
 	execve(path, cmd, NULL);
 	close(fdi);
 	free (path);
+	ft_free_double(cmd);
 	return (1);
 }
