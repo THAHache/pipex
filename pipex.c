@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:32:56 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/07 17:18:55 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:43:11 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ int	pipex(char **s)
 			return (0);
 		}
 	}
-	else
-		if (!father(s, fdp))
-		{
-			close(fdp[0]);
-			return (0);
-		}
+	else if (!father(s, fdp))
+	{
+		close(fdp[0]);
+		return (0);
+	}
 	return (1);
 }
 
@@ -47,9 +46,7 @@ int	main(int argc, char *argv[])
 		return (error_pipex(0, "file1 command1 command2 file2\n"));
 	if (!pipex(argv))
 	{
-		system("leaks -q -atExit -- ./pipex");
 		return (0);
 	}
-	system("leaks -q -atExit -- ./pipex");
 	return (1);
 }

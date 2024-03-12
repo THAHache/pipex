@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:39:33 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/07 16:18:04 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:43:33 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	error_pipex(int er, char *cmd)
 		msg = ft_strjoin("Error. Command not found: ", cmd);
 		ft_putstr_fd(msg, 2);
 	}
-	if (er >= 6) /*Default error*/
+	if (er >= 6)
 		perror("Error");
 	if (msg)
 		free (msg);
