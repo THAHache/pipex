@@ -6,11 +6,19 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:14:34 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/12 12:44:32 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:18:50 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	wait_child(void)
+{
+	int	status;
+
+	wait(&status);
+	return (status);
+}
 
 int	father(char **s, int *fdp)
 {
@@ -19,6 +27,7 @@ int	father(char **s, int *fdp)
 	int		fdo;
 
 	close(fdp[1]);
+	wait_child();
 	if (!can_write(s[4]))
 		return (0);
 	fdo = open(s[4], O_WRONLY | O_CREAT | O_TRUNC, 0600);

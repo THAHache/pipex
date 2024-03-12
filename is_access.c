@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 16:11:29 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/07 16:55:38 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:02:52 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	can_read(char *s)
 	err = NULL;
 	ret = 1;
 	if (access (s, F_OK) != 0)
-		ret = error_pipex(3, NULL);
+	{
+		err = ft_strjoin(s, "\n");
+		ret = error_pipex(3, err);
+	}
 	else if (access (s, R_OK) != 0)
 	{
 		err = ft_strjoin(s, "\n");

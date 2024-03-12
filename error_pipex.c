@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:39:33 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/12 13:01:56 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:04:56 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	error_pipex(int er, char *cmd)
 	else if (er == 2)
 		ft_putstr_fd("Error: PID incorrect\n", 2);
 	else if (er == 3)
-		perror("Error");
+		msg = ft_strjoin("Error: No such file or directory: ", cmd);
 	else if (er == 4)
 		msg = ft_strjoin("Error: Permission denied: ", cmd);
 	else if (er == 5)
 		msg = ft_strjoin("Error. Command not found: ", cmd);
+	else if (er > 5)
+		perror("Error");
 	if (msg)
 	{
 		ft_putstr_fd(msg, 2);
