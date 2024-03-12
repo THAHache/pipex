@@ -6,7 +6,7 @@
 /*   By: jperez-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:39:33 by jperez-r          #+#    #+#             */
-/*   Updated: 2024/03/12 12:43:33 by jperez-r         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:01:56 by jperez-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,21 @@ int	error_pipex(int er, char *cmd)
 
 	msg = NULL;
 	if (er == 0)
-	{
 		msg = ft_strjoin("Error: Need 4 arguments:\n", cmd);
-		ft_putstr_fd(msg, 2);
-	}
-	if (er == 1)
+	else if (er == 1)
 		ft_putstr_fd("Error: Pipe not open\n", 2);
-	if (er == 2)
+	else if (er == 2)
 		ft_putstr_fd("Error: PID incorrect\n", 2);
-	if (er == 3)
+	else if (er == 3)
 		perror("Error");
-	if (er == 4)
-	{
+	else if (er == 4)
 		msg = ft_strjoin("Error: Permission denied: ", cmd);
-		ft_putstr_fd(msg, 2);
-	}
-	if (er == 5)
-	{
+	else if (er == 5)
 		msg = ft_strjoin("Error. Command not found: ", cmd);
-		ft_putstr_fd(msg, 2);
-	}
-	if (er >= 6)
-		perror("Error");
 	if (msg)
+	{
+		ft_putstr_fd(msg, 2);
 		free (msg);
+	}
 	return (0);
 }
